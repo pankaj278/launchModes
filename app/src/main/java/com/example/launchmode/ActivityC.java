@@ -8,14 +8,38 @@ import android.view.View;
 
 public class ActivityC extends AppCompatActivity {
 
-    private static final String TAG = "AActivityD";
+    private static final String TAG = "MODECHECK_ACTIVITY_C";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_c);
         Log.d(TAG,"onCreate");
-        findViewById(R.id.cBTN).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityC.this,ActivityA.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityC.this,ActivityB.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityC.this,ActivityC.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityC.this,ActivityD.class);
@@ -58,5 +82,11 @@ public class ActivityC extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.d(TAG,"onRestart");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d(TAG,"onNewIntent");
     }
 }

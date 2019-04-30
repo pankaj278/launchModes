@@ -8,17 +8,41 @@ import android.util.Log;
 import android.view.View;
 
 public class ActivityA extends AppCompatActivity {
-     private static final String TAG = "AACTIVITY_A";
+     private static final String TAG = "MODECHECK_ACTIVITY_A";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity);
         Log.d(TAG,"onCreate");
-        findViewById(R.id.aBTN).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityA.this,ActivityA.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityA.this,ActivityB.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityA.this,ActivityC.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityA.this,ActivityD.class);
                 intent.putExtra("DATA","VALUE");
                 startActivity(intent);
             }

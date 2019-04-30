@@ -8,17 +8,41 @@ import android.view.View;
 
 public class ActivityB extends AppCompatActivity {
 
-    private static final String TAG = "AActivityB";
+    private static final String TAG = "MODECHECK_ACTIVITY_B";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b);
         Log.d(TAG,"onCreate");
-        findViewById(R.id.bBTN).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityB.this,ActivityA.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityB.this,ActivityB.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityB.this,ActivityC.class);
+                intent.putExtra("DATA","VALUE");
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityB.this,ActivityD.class);
                 intent.putExtra("DATA","VALUE");
                 startActivity(intent);
             }
@@ -57,6 +81,12 @@ public class ActivityB extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        Log.d(TAG,"onRestart");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         Log.d(TAG,"onRestart");
     }
 }
